@@ -1,0 +1,386 @@
+/* Gallery组件样式 */
+
+.gallery-container {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #ffeaa7 100%);
+}
+
+.gallery-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(168, 237, 234, 0.3);
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #e91e63;
+  margin-bottom: 3rem;
+  animation: titleShine 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleShine {
+  from {
+    text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
+  }
+}
+
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #ff6b9d, #ff8fab, #ffa8a8);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+}
+
+.memory-item {
+  position: relative;
+  margin-bottom: 3rem;
+  animation: memoryAppear 0.6s ease-out;
+}
+
+.memory-item:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.memory-item:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+@keyframes memoryAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memory-item.left .memory-card {
+  margin-right: 60%;
+  margin-left: 0;
+}
+
+.memory-item.right .memory-card {
+  margin-left: 60%;
+  margin-right: 0;
+}
+
+.memory-card {
+  background: linear-gradient(135deg, #fff5f5, #ffe0e6);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.memory-card:hover::before {
+  left: 100%;
+}
+
+.memory-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 182, 193, 0.4);
+  border-color: #ff6b9d;
+}
+
+.memory-image {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.photo-placeholder {
+  font-size: 4rem;
+  animation: photoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes photoGlow {
+  from {
+    filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.8));
+  }
+}
+
+.memory-info h4 {
+  color: #e91e63;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.memory-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.memory-desc {
+  color: #555;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+  z-index: 2;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.add-memory-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #ffb3ba;
+}
+
+.add-memory-section h3 {
+  text-align: center;
+  color: #e91e63;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.add-memory-form {
+  background: linear-gradient(135deg, #f8f9fa, #ffe0e6);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid #ffb3ba;
+}
+
+.add-memory-form input,
+.add-memory-form textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #ffc0cb;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.add-memory-form input:focus,
+.add-memory-form textarea:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.2);
+  transform: scale(1.01);
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #e91e63, #f06292);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+  width: 100%;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+.next-button {
+  background: linear-gradient(135deg, #e91e63, #f06292);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+  display: block;
+  margin: 3rem auto 0;
+}
+
+.next-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+/* 照片模态框 */
+.photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e91e63;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+  background: #c2185b;
+}
+
+.modal-image {
+  margin-bottom: 1rem;
+}
+
+.large-photo {
+  font-size: 6rem;
+}
+
+.modal-content h3 {
+  color: #e91e63;
+  margin-bottom: 0.5rem;
+}
+
+.modal-date {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.modal-description {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gallery-content {
+    padding: 2rem 1rem;
+    margin: 1rem;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+  }
+  
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .memory-item.left .memory-card,
+  .memory-item.right .memory-card {
+    margin-left: 60px;
+    margin-right: 0;
+  }
+  
+  .timeline-dot {
+    left: 30px;
+  }
+  
+  .photo-placeholder {
+    font-size: 3rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .large-photo {
+    font-size: 4rem;
+  }
+}
